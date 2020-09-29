@@ -1,17 +1,14 @@
 # Best Day Planner
 
-A timed quiz on JavaScript fundamentals that stores high scores
-that can gauge user's progress compared to their peers.
+An employee with a busy schedule can add important events to a daily 
+planner so that they can manage their time effectively.
 
 ## Description:
 
 ```
-As the user progresses in a career as a web developer, the user will probably be asked to complete a coding 
-assessment, which is typically a combination of multiple-choice questions and interactive challenges. This 
-app is a timed code quiz with multiple-choice questions. The app will run in the browser and feature 
-dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished 
-user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
+A simple calendar application that allows the user to save events for each hour of the day. This app will run
+ in the browser and feature dynamically updated HTML and CSS powered by jQuery and feature Moment.js. 
 
 ```
 
@@ -32,5 +29,7 @@ https://bbarello.github.io/best_day_planner/
 
 ## Screenshot:
 
-![Pasword Generator](best-day-planner.gif)
+![Best Day Planner Desktop](best-day-planner.gif)
+![Best Day Planner Mobile](best-day-planner2.gif)
+
 
