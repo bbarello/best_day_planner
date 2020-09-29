@@ -1,93 +1,65 @@
-$(document).ready(function () {
-
-    // Static
-
-    // The first basic method of Moment.js is the moment() method. Use this to get today's info!
-    console.log(moment());
-
-    console.log(moment().format());
-
-    // Using moment format, there are different ways that we can display todays date!
-    $("#date").text(moment());
-    $("#date-formatted").text(moment().format());
-    $("#date-my").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-
-    $("#day-week").text(moment().format('do'));
-    $("#day-month").text(moment().format('Do'));
-    $("#day-year").text(moment().format('DDDo'))
-
-    // Current Time
-    // Here we want to use setInterval to constantly update the time
-    let updateTime = function () {
-        let currentTime = moment().format('h:mm:ss')
-        $("#time").text(currentTime)
-    }
-
-    // Here we will get the number of hours in the year
-    let updateHour = function () {
-        let date = moment().dayOfYear()
-        let yearHours = date * 24
-        let todayHours = moment().hour();
-        let sumHours = yearHours + todayHours
-        $("#hours").text(sumHours)
-    }
-
-    // Here we will get the number of minutes in the week
-    let updateMinutes = function () {
-        let date = moment().weekday();
-        let weekMinutes = (date * 24 * 60) + (moment().minute());
-        $("#minutes").text(weekMinutes);
-    }
-
-    // Here we will get the number of seconds in the day
-    let updateSeconds = function () {
-        let todayHours = moment().hour();
-        let todaySeconds = todayHours * 60 * 60;
-        let thisSecond = moment().second();
-        let sumSeconds = thisSecond + todaySeconds;
-        $("#seconds").text(sumSeconds);
-    }
-
-    let countdown = function () {
-
-        // Friday
-        let friday = moment().day("fr")._d
-
-        // convert this into day of the year
-        let fridayDate = moment(friday).dayOfYear();
-
-        // This will get the milliseconds of Friday
-        let fridayMils = fridayDate * 24 * 60 * 60 * 1000
-        // Turn into seconds
-
-        // Today
-        // Turn into milliseconds
-
-        let date = moment().dayOfYear()
-        let yearMils = date * 24 * 60 * 60 * 1000
-        let todayMils = moment().hour() * 60 * 60 * 1000;
-        let thisMilsSecond = moment().second() * 1000;
-        let thisMils = moment().millisecond();
-
-        // This value should be increasing over time
-        let sumMils = yearMils + todayMils + thisMilsSecond + thisMils;
-
-        let ms = fridayMils - sumMils;
-        $("#countdown").text(ms)
-    }
-
-    // To initally set the times, we will call the functions
-    updateTime();
-    updateHour();
-    updateMinutes();
-    updateSeconds();
-    countdown();
-
-    // To continuously call the functions, we will use setInterval
-    setInterval(updateTime, 1000);
-    setInterval(updateHour, 1000);
-    setInterval(updateMinutes, 1000);
-    setInterval(updateSeconds, 1000);
-    setInterval(countdown, 1);
-
-})
+// Wait until Jquery is ready
+$( document ).ready(function() {
+    //Display current date
+    //Variable to append cols
+  var a= moment().format('dddd MMMM, Do YYYY');
+    $("#display-date").text(a)
+    var row = ""
+    //loop to dispaly 9am-18pm
+      for (var i= 9 ; i<=18; i++){
+        // Creation of the row elements
+        row = $(`<div class="row">`)
+        col1 = $(`<div class ="col-lg-2 hour">${displayAmorPm(i)}</div>`)
+        col2 = $(`<div class ="col-lg-8 inputcontent"><input data-input="${i}" id="inputText${i}" class="form-control inputText" type="text" name="userInput"></div>`)
+        col3 = $(`<div class ="col-lg-2"><button data-id="${i}" id="savePlanner" class="btn btn-success btn-block"><i class="fas fa-save"></i></button></div>`)
+        row.append(col1)
+        row.append(col2)
+        row.append(col3)
+        $("#display-planner").append(row)
+        getlocalStorage(i)
+      }
+     $("button.btn.btn-success").click(function(e){
+     var id = $(this).data("id")
+     var inputText = $(this).parent().siblings().find("input").val()
+     localStorage.setItem(id,inputText)
+     })
+    //  Convert Am to Pm
+     function displayAmorPm(hour){
+       var b=""
+       if(hour<=12){
+         b= "AM"
+       }else{
+         b="PM"
+       }
+       hour = hour % 12
+       hour = hour ? hour : 12
+       return hour + " " + b
+     }
+    });
+    
+    // function to store hour in local storage
+     function getlocalStorage(hour){
+       var inputval = localStorage.getItem(hour)
+       if(true){
+        //  $("input").data(`input${hour}`)
+        var text= $(`input#inputText${hour}`).val(inputval)
+        console.log(text)
+       }
+     }
+     // function to change color
+     function updateColor(){
+       var hour = new Date().getHours();
+       for (var i= 9 ; i<=18; i++){
+         console.log(hour,i)
+         if(hour==i ) {
+          $(`#inputText${i}`).css("background","red")
+         }else  if(hour<i ){
+          
+           $(`#inputText${i}`).css("background","lightblue")
+  
+         }
+       }
+     }
+     setInterval(function(){
+       updateColor()
+     },1000)
