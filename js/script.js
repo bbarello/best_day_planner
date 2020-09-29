@@ -53,7 +53,7 @@ $( document ).ready(function() {
        for (var i= 9 ; i<=18; i++){
          console.log(hour,i)
          if(hour==i ) {
-          $(`#inputText${i}`).css("background","red").css("color","white")
+          $(`#inputText${i}`).css("background","red").css("color","white").css("text-transform", "capitalize")
          }else  if(hour<i ){
           
            $(`#inputText${i}`).css("background","lightblue")
