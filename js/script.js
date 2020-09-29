@@ -1,17 +1,17 @@
-// Wait until Jquery is ready
 $( document ).ready(function() {
-    //Display current date
-    //Variable to append cols
+
+    // date format
   var a= moment().format('dddd MMMM, Do YYYY');
     $("#display-date").text(a)
     var row = ""
-    //loop to dispaly 9am-18pm
+
+      // for loop to dispaly 9:00am-6:00pm
       for (var i= 9 ; i<=18; i++){
         // Creation of the row elements
         row = $(`<div class="row">`)
         col1 = $(`<div class ="col-lg-2 hour">${displayAmorPm(i)}</div>`)
-        col2 = $(`<div class ="col-lg-8 inputcontent"><input data-input="${i}" id="inputText${i}" class="form-control inputText" type="text" name="userInput"></div>`)
-        col3 = $(`<div class ="col-lg-2"><button data-id="${i}" id="savePlanner" class="btn btn-success btn-block"><i class="fas fa-save"></i></button></div>`)
+        col2 = $(`<div class ="col-lg-8 inputcontent"><input data-input="${i}" id="inputText${i}" class="form-control input" type="text" name="userInput"></div>`)
+        col3 = $(`<div class ="col-lg-2"><button data-id="${i}" id="savePlanner" class="btn btn-primary btn-block"><i class="fas fa-save"></i></button></div>`)
         row.append(col1)
         row.append(col2)
         row.append(col3)
@@ -23,7 +23,8 @@ $( document ).ready(function() {
      var inputText = $(this).parent().siblings().find("input").val()
      localStorage.setItem(id,inputText)
      })
-    //  Convert Am to Pm
+
+    //  function to apply AM to PM
      function displayAmorPm(hour){
        var b=""
        if(hour<=12){
@@ -46,7 +47,7 @@ $( document ).ready(function() {
         console.log(text)
        }
      }
-     // function to change color
+     // function to change background color based on past, current and future time slots
      function updateColor(){
        var hour = new Date().getHours();
        for (var i= 9 ; i<=18; i++){

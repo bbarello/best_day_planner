@@ -20,10 +20,10 @@ user interface and be responsive, ensuring that it adapts to multiple screen siz
 ```
 - HTML5
 - CSS3
+- Bootstap 4
 - Responsive Design(RWD)
 - Moment.js
 - Jquery
-- AJAX
 
 ```
 ## Staging Link:

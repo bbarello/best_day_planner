@@ -1,26 +1,44 @@
-.inputText{
-  background: #eee;
-  height: 80px;
-  border: none;
-  border-radius: 0;
-  border-left: rgba(17, 119, 167, 0.467);
-  padding: 10px;
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
 
+.input{
+  background: #f8f9fa;
+  padding: 10px;
+  outline:none;
+  height:60px;
+  border-top: 1px dotted rgb(19, 156, 235);
+
+}
+
+.input:focus{
+  outline:none;
+  border:0;
 }
 .body{
   background: red;
 }
+
 .btn{
-  height: 80px;
+  height:60px;
+  width:60px;
 }
 .row{
-  margin-bottom: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 .hour{
   border-top: 1px dotted rgb(19, 156, 235);
-  padding-top: 30px;
+  height:60px!important;
+  vertical-align: bottom;
+  padding-top:20px;
 }
 .inputcontent{
   margin-left: -20px;
   margin-right: -28px;
+}
+.space {
+  height:60px;
 }
