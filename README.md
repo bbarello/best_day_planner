@@ -30,6 +30,5 @@ https://bbarello.github.io/best_day_planner/
 ## Screenshot:
 
 ![Best Day Planner Desktop](best-day-planner.gif)
-![Best Day Planner Mobile](best-day-planner2.gif)
 
 
